@@ -5,7 +5,7 @@ AuthMiddleware::check();
 $chat = require __DIR__ . '/../bootstrap.php';
 
 $userId = $_SESSION['user_id'];
-$username = $_SESSION['username'] ?? 'Usuario';
+$nombre = $_SESSION['nombre'] ?? 'Usuario';
 
 // Cambiar de chat si viene por GET
 if (isset($_GET['chat_id'])) {
@@ -155,11 +155,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question) {
         <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/ollama.png">
     </div>
 
-   <div class="user-info">
-    <strong>Bienvenido, <?= htmlspecialchars($username) ?>!</strong> |
-    <a href="profile.php">👤 Mi perfil</a> |
-    <a href="logout.php">🔒 Cerrar sesión</a>
-</div>
+    <div class="user-info">
+        <strong>Bienvenido, <?= htmlspecialchars($nombre) ?>!</strong> |
+        <a href="logout.php">Cerrar sesión</a>
+    </div>
 
     <form method="POST">
         <label for="question">Ingresa lo que deseas preguntar:</label>
