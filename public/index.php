@@ -155,10 +155,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question) {
         <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/ollama.png">
     </div>
 
-    <div class="user-info">
-        <strong>Bienvenido, <?= htmlspecialchars($username) ?>!</strong> |
-        <a href="logout.php">Cerrar sesión</a>
-    </div>
+   <div class="user-info">
+    <strong>Bienvenido, <?= htmlspecialchars($username) ?>!</strong> |
+    <a href="profile.php">👤 Mi perfil</a> |
+    <a href="logout.php">🔒 Cerrar sesión</a>
+</div>
 
     <form method="POST">
         <label for="question">Ingresa lo que deseas preguntar:</label>
