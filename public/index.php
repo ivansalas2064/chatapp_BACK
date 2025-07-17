@@ -147,6 +147,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question) {
             text-align: right;
         }
 
+        .chat-product {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-left: 5px solid #4CAF50;
+        padding: 16px;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .chat-product h4 {
+        margin-top: 0;
+        color: #222;
+        }
+ 
+        .chat-product a {
+        color: #0070c9;
+        font-weight: bold;
+        text-decoration: none;
+        }
+        .chat-product a:hover {
+        text-decoration: underline;
+        }
+
+        .chat-product img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -157,7 +187,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question) {
 
     <div class="user-info">
         <strong>Bienvenido, <?= htmlspecialchars($nombre) ?>!</strong> |
-        <a href="logout.php">Cerrar sesión</a>
+        <a href="profile.php"> Perfil </a> |
+        <a href="logout.php">Cerrar sesión</a> |
     </div>
 
     <form method="POST">
@@ -176,7 +207,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $question) {
         if ($messages):
             foreach ($messages as $msg):
                 $label = $msg['role'] === 'user' ? '🧑 Tú:' : '🤖 Bot:';
-                echo "<div class='message'><strong>$label</strong> " . htmlspecialchars($msg['message']) . "</div>";
+                $content = htmlspecialchars($msg['message']);
+
+                if ($msg['role'] === 'bot' && str_contains($msg['message'], 'amazon.')) 
+                    {
+                        echo "<div class='chat-product'>";
+                        echo "<strong>$label</strong><br>";
+                        echo nl2br($content);
+                        echo "</div>";
+                    } 
+                else 
+                    {
+                        echo "<div class='message'><strong>$label</strong> " . nl2br($content) . "</div>";
+                    }
             endforeach;
         else:
             echo "<p>Este chat está vacío aún.</p>";
