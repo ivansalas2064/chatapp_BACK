@@ -47,6 +47,50 @@ composer install
 
 php -S localhost:8000 -t public
 
+## 📝 Endpoint de Registro de Usuario
+
+## 🆕 POST /api/register.php
+
+Registra un nuevo usuario en la base de datos.
+
+## Body (JSON):
+
+{
+
+  "nombre": "María Fernanda",
+  
+  "apellido_paterno": "García",
+  
+  "apellido_materno": "López",
+  
+  "edad": 25,
+  
+  "sexo": "Femenino",
+  
+  "username": "maria@example.com",
+  
+  "password": "supersegura123",
+  
+  "fecha_nacimiento": "2000-04-15",
+  
+  "telefono": "5551234567"
+  
+}
+
+## 🟡 Campos obligatorios: nombre, username, password
+
+Los demás campos son opcionales pero recomendados para completar el perfil.
+
+## Respuesta 200 OK:
+
+{ "message": "Usuario registrado exitosamente" }
+
+## Errores posibles:
+
+400 Bad Request: Faltan campos obligatorios (nombre, username, password)
+
+409 Conflict: El nombre de usuario ya está registrado
+
 ## 🔐 Autenticación
 
 ## 📄 GET /api/profile.php
@@ -57,7 +101,7 @@ Encabezados:
 
 Requiere sesión activa (cookie o token en caso de usarse).
 
-Respuesta 200 OK:
+## Respuesta 200 OK:
 
 {
 
@@ -81,7 +125,7 @@ Respuesta 200 OK:
   
 }
 
-Errores:
+## Errores:
 
 401 Unauthorized → Si no hay sesión válida
 
@@ -91,7 +135,7 @@ Errores:
 
 Actualiza los datos del usuario autenticado.
 
-Body (JSON):
+## Body (JSON):
 
 {
 
@@ -115,11 +159,11 @@ Body (JSON):
 
 ## 🔐 El campo password es opcional. Si se incluye, se actualiza.
 
-Respuesta 200 OK:
+## Respuesta 200 OK:
 
 { "message": "Perfil actualizado correctamente" }
 
-Errores:
+## Errores:
 
 400 Bad Request → Datos inválidos o faltantes
 
@@ -129,7 +173,7 @@ Errores:
 
 Inicia sesión con usuario y contraseña.
 
-Request
+## Request
 
 {
 
@@ -139,7 +183,7 @@ Request
   
 }
 
-Respuesta
+## Respuesta
 
 {
 
@@ -153,7 +197,7 @@ Respuesta
 
 Cierra la sesión actual del usuario.
 
-Respuesta
+## Respuesta
 
 {
 
@@ -167,7 +211,7 @@ Respuesta
 
 Envía una pregunta al chatbot y obtiene la respuesta generada por IA.
 
-Request
+## Request
 
 {
 
@@ -175,7 +219,7 @@ Request
   
 }
 
-Respuesta
+## Respuesta
 
 {
 
@@ -191,7 +235,7 @@ Respuesta
 
 Devuelve todos los chats creados por el usuario autenticado.
 
-Respuesta
+## Respuesta
 
 [
 
@@ -205,7 +249,7 @@ Respuesta
 
 Crea un nuevo chat vacío.
 
-Respuesta
+## Respuesta
 
 {
 
@@ -217,7 +261,7 @@ Respuesta
 
 Elimina un chat específico.
 
-Request
+## Request
 
 {
 
@@ -225,7 +269,7 @@ Request
   
 }
 
-Respuesta
+## Respuesta
 
 {
 
@@ -239,7 +283,7 @@ Respuesta
 
 Obtiene los mensajes de un chat específico (ordenados cronológicamente).
 
-Respuesta
+## Respuesta
 
 [
 
