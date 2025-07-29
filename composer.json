@@ -1,5 +1,5 @@
 {
-    "name": "chatapp",
+    "name": "chatapp/api",
     "type": "project",
     "license": "MIT",
     "autoload": {
